@@ -2,6 +2,7 @@
 
 body {
   font-family: "Lato", sans-serif;
+  width: 100%;
 }
 
 h2 {
@@ -32,25 +33,16 @@ section.alternate-background {
 
 main img {
   width: 100%;
-  margin: 10px;
+  height: auto;
 }
-
-#about, #ideas, #host{
-  padding-left: 0;
-}
-
-#about p, #ideas h3, #host h2, #host p{
-  padding-left: 10px
-}
-
-
-
-
-/* ---  Groups & Items --- */
 
 .group {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.col {
+  align-items: center;
 }
 
 .item {
@@ -58,20 +50,8 @@ main img {
   margin: 10px;
 }
 
-.item2 {
-  flex: 1;
-}
-
 .item-double {
   flex: 2;
-}
-
-.center-align{
-  align-items: center;
-}
-
-.right-align{
-  align-items: flex-end;
 }
 
 /* -------  Navigation ------- */
@@ -80,35 +60,40 @@ header {
   background-color: #ff385c;
   padding: 20px 20px 0 20px;
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .logo {
   font-family: "Pangolin", cursive;
-  font-size: 52px;
+  font-size: 50px;
   color: #fff;
 }
 
 header nav {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-header nav ul{
+header nav ul {
   display: flex;
-  text-align: center;
-  padding: 0;
-  justify-content: center;
+  padding-left: 0;
+  list-style: none;
 }
 
 header nav ul li {
   list-style-type: none;
-
+  font-size: x-large;
 }
 
 header nav ul li a {
   color: #fff;
   text-decoration: none;
   padding: 0 20px 0 0;
-  text-align: center;
+}
+
+header nav ul li:last-child a {
+  margin-right: 0;
+  padding-right: 0;
 }
 
 header nav ul li a:hover {
@@ -117,20 +102,20 @@ header nav ul li a:hover {
 }
 
 /* -------  Search Form ------- */
+
 form {
   border: 2px solid #ff385c;
   padding: 10px;
 }
 
 form label {
-  padding: 60px;
   font-weight: bold;
 }
 
 form select,
 form input {
   margin-bottom: 20px;
-  width: 160px;
+  width: 180px;
 }
 
 form button {
@@ -142,15 +127,22 @@ form button {
   width: 100%;
 }
 
-main section form div{
+.date::placeholder {
+  color: black;
+}
+
+.space-between {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
-form div label{
-    align-items: center;
-    margin-right: auto;
-  }
+/* ------- Ideas ------- */
+
+.col2 {
+  flex-direction: column;
+  align-items: center;
+}
 
 /* -------  Footer ------- */
 
@@ -164,47 +156,74 @@ footer p {
   padding: 20px;
 }
 
-/* -------  Media Query ------- */
-@media all and (min-width:480px){
+/* -------  Media Query for Desktop ------- */
+
+/* *** media query for header */
+
+@media all and (min-width: 480px) {
   header {
+    /* Changes the default setting from `block` to `flex`. */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header nav {
+    align-items: center;
+    justify-content: center;
+  }
+  header nav ul li a:hover {
+    color: #bdbdbd;
+  }
+  .logo {
+    font-size: 30px;
+    justify-content: center;
+  }
+}
+
+/* rule for Form area */
+
+@media all and (min-width: 1200px) {
+  .form-container {
     display: flex;
     justify-content: space-between;
   }
-
-  .logo{
-    font-size: 40px
-  }
-  header nav{
+  .space-between {
     display: flex;
+    flex-direction: column;
+    margin-right: 40px;
   }
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
 
-  form{
+/* rule for About section */
+
+@media all and (min-width: 750px) {
+  .col {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+  }
+  .padding {
+    margin: 10px;
+  }
+}
+
+/* rule for Ideas section */
+
+@media all and (min-width: 750px) {
+  .picture-grid {
+    display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
   }
-
-  .button{
-    justify-content: center;
+  .col2 {
+    flex: 1 0 calc(35% - 20px);
+    margin: 5px;
   }
-
-  .group2{
-    display: flex;
-    flex-direction: row;
-   }
-  
-  main section{
-    display: flex;
+  .padding {
+    margin: 10px;
   }
- } 
-
- #stay {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-  }
-
-  #stay > form {
-    display: flex;
-    justify-content: start;
-  }
+}
